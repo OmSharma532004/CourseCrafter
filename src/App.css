@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body{
+    overflow-x: hidden;
+    overflow-y:auto;
+
+}
+.code{
+    background: rgb(9,121,23);
+     background: radial-gradient(circle, rgba(9,121,23,1) 7%, rgba(234,255,0,1) 56%);
+}
+
+.home-bg{
+    background-image: url("../src/assets/Images/bghome.svg");
+}

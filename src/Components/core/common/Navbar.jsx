@@ -63,7 +63,7 @@ const Navbar = ()=>{
                                     <div className=" opacity-0  absolute left-[50%] top-[50%] z-50 flex w-[200px] 
                                     translate-x-[-50%] translate-y-[3em] flex-col rounded-lg bg-richblack-5 p-4
                                      text-richblack-900  transition-all duration-150 
-                                      group-hover:translate-y-[1.65em] group-hover:opacity-100 lg:w-[300px]">
+                                      hover:translate-y-[1.65em] hover:opacity-100 lg:w-[300px]">
 
 
                         <div className="absolute left-[50%] top-0 -z-10 h-6 w-6 translate-x-[80%] translate-y-[-40%] rotate-45 select-none rounded bg-richblack-5"></div>

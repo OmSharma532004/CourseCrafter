@@ -26,7 +26,7 @@ export const MyCourses=  ()=>{
                All Courses Published By you
                 </h1>
             </div>
-            <div>
+            <div className="flex">
                
                
                

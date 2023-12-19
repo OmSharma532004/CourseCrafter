@@ -203,13 +203,13 @@ exports.editCourse = async (req, res) => {
 exports.getAllCourses = async (req, res) => {
   try {
     const allCourses = await Course.find(
-      { status: "Published" },
+      { status: "Draft" },
       {
         courseName: true,
         price: true,
-        thumbnail: true,
+        // thumbnail: true,
         instructor: true,
-        ratingAndReviews: true,
+        // ratingAndReviews: true,
         studentsEnrolled: true,
       }
     )

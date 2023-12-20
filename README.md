@@ -1,6 +1,10 @@
-# Study Notion
+#DIRECT LINK TO THE PROJECT
+https://study-six-delta.vercel.app
 
-Study Notion is an ED Tech (Education Technology) web application developed using the MERN stack.
+
+# Study 
+
+Study  is an ED Tech (Education Technology) web application developed using the MERN stack.
 
 ## Note
 

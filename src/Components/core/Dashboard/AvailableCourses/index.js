@@ -1,6 +1,7 @@
 import React, { useEffect ,useSelector, useState} from "react";
 import { getAllCourses } from "../../../../services/operations/courseDetailsAPI";
 import { EachCourse } from "../MyCourses/EachCourse";
+import { Course } from "./Course";
 
 export const AvailableCourses=()=>{
     const [courses,setCourses]=useState([]);
@@ -33,7 +34,7 @@ export const AvailableCourses=()=>{
                             
                        
                            return(
-                            <EachCourse key={key} course={course}/>
+                            <Course key={key} course={course}/>
                            ) 
                         })):(
                             <div>

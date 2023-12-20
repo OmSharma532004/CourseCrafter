@@ -55,6 +55,7 @@ export const EachCourse= ({course})=>{
                     <h1 className=" text-yellow-50 text-xl">{course2.courseDetails.courseName}</h1>
                     <div className="description">
                     {description}
+                    <div><b className="text-yellow-200">Price- </b>{course2.courseDetails.price} </div>
                     <br></br>
                     <span className="readMore text-blue-200" onClick={readmoreHandler}>
                         {readmore ? `show less` : `read more`}

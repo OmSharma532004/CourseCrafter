@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 
+
 const userRoutes = require("./routes/User");
 const profileRoutes = require("./routes/Profile");
 const paymentRoutes = require("./routes/Payments");
@@ -21,12 +22,7 @@ database.connect();
 //middlewares
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-	cors({
-		origin:"http://localhost:3000",
-		credentials:true,
-	})
-)
+app.use(cors());
 
 app.use(
 	fileUpload({

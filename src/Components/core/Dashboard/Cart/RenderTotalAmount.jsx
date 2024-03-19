@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
-import IconBtn from "../../common/IconBtn"
-
+import IconBtn from "../../../core/common/IconBtn"
+import { buyCourse } from "../../../../services/operations/studentFeaturesApi"
 
 export default function RenderTotalAmount() {
   const { total, cart } = useSelector((state) => state.cart)
@@ -13,8 +13,7 @@ export default function RenderTotalAmount() {
 
   const handleBuyCourse = () => {
     const courses = cart.map((course) => course._id)
-    console.log("Bought these courses");
-
+    buyCourse(token, courses, user, navigate, dispatch)
   }
 
   return (

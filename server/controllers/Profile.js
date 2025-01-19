@@ -236,3 +236,58 @@ exports.getEnrolledCourses = async (req, res) => {
 //     res.status(500).json({ message: "Server Error" })
 //   }
 // }
+
+exports.enrollStudent = async (req, res) => {
+  try {
+    const { courseId } = req.body
+    const userId = req.user.id
+    console.log(userId, courseId);
+
+    // Find the course
+    const course = await Course.findById(courseId)
+    if(!course) {
+      return res.status(404).json({
+        success: false,
+        message: `Course not found with id: ${courseId}`,
+      })
+    }
+
+    // Find the user
+    const user = await User.findById(userId)
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: `User not found with id: ${userId}`,
+      })
+    }
+
+    // Check if the user is already enrolled
+    // const isEnrolled = user.courses.includes(courseId)
+    // if (isEnrolled) {
+    //   return res.status(400).json({
+    //     success: false,
+    //     message: "User is already enrolled in this course",
+    //   })
+    // }
+
+    // Add the user to the course
+
+    course.studentsEnrolled.push(userId)
+    await course.save()
+
+    // Add the course to the user
+    user.courses.push(courseId)
+    await user.save()
+
+    return res.status(200).json({
+      success: true,
+      message: "User enrolled successfully",
+    })
+  }
+  catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    })
+  }
+}

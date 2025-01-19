@@ -15,6 +15,7 @@ const {
 } = require("../controllers/ResetPassword")
 
 const { auth } = require("../middlewares/auth")
+const { enrollStudent } = require("../controllers/Profile")
 
 // Routes for Login, Signup, and Authentication
 
@@ -44,5 +45,7 @@ router.post("/reset-password-token", resetPasswordToken)
 // Route for resetting user's password after verification
 router.post("/reset-password", resetPassword)
 
+//enroll the user
+router.post("/enroll", auth, enrollStudent);
 // Export the router for use in the main application
 module.exports = router

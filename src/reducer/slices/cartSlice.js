@@ -65,9 +65,15 @@ const cartSlice = createSlice({
       localStorage.removeItem("total")
       localStorage.removeItem("totalItems")
     },
+    setTotalZero: (state) => {
+      state.total = 0
+      // Update to localstorage
+      localStorage.setItem("total", JSON.stringify(state.total))
+      
+    }
   },
 })
 
-export const { addToCart, removeFromCart, resetCart } = cartSlice.actions
+export const { addToCart, removeFromCart, resetCart , setTotalZero } = cartSlice.actions
 
 export default cartSlice.reducer

@@ -4,9 +4,11 @@ import { apiConnector } from "../apiconnecter"
 import rzpLogo from "../../assets/Images/rzp.png";
 import { setPaymentLoading } from "../../reducer/slices/courseSlice";
 import { resetCart } from "../../reducer/slices/cartSlice";
+import {enrollStudent} from "../apis";
 
 
-const {COURSE_PAYMENT_API, COURSE_VERIFY_API, SEND_PAYMENT_SUCCESS_EMAIL_API} = studentEndpoints;
+const {COURSE_PAYMENT_API, COURSE_VERIFY_API, SEND_PAYMENT_SUCCESS_EMAIL_API } = studentEndpoints;
+const {ENROLLSTUDENT}=enrollStudent;
 
 function loadScript(src) {
     return new Promise((resolve) => {
@@ -62,9 +64,9 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
             },
             handler: function(response) {
                 //send successful wala mail
-                sendPaymentSuccessEmail(response, orderResponse.data.message.amount,token );
+                // sendPaymentSuccessEmail(response, orderResponse.data.message.amount,token );
                 //verifyPayment
-                verifyPayment({...response, courses}, token, navigate, dispatch);
+                // verifyPayment({...response, courses}, token, navigate, dispatch);
             }
         }
         //miss hogya tha 
@@ -82,6 +84,34 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
     }
     toast.dismiss(toastId);
 }
+export async function buyFreeCourse(token, courses, userDetails, navigate, dispatch) {
+
+    const toastId = toast.loading("Loading...");
+    
+    //no fees just enroll the student in the course
+    courses.forEach(async (course) => {
+        try{
+            console.log(course);
+            const response = await apiConnector("POST", ENROLLSTUDENT, {
+                courseId: course,
+            },{
+                Authorization: `Bearer ${token}`,
+            })
+            if(!response.data.success) {
+                throw new Error(response.data.message);
+            }
+            toast.success("Enrolled Successfully");
+            navigate("/dashboard/enrolled-courses");
+        }
+        catch(error) {
+            console.log("ENROLL STUDENT ERROR....", error);
+            toast.error("Could not enroll student");
+        }
+    }
+    )
+
+}
+
 
 async function sendPaymentSuccessEmail(response, amount, token) {
     try{

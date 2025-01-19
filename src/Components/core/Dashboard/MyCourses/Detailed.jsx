@@ -45,7 +45,7 @@ export const Detailed=({course,setDetails})=>{
                     course2.courseDetails.instructions
                     }
                     </p>
-                    <p><b className=" text-yellow-200">Created At- -</b> {course2.courseDetails.createdAt}</p>
+                    {/* <p><b className=" text-yellow-200">Created At- -</b> {course2.courseDetails.createdAt}</p> */}
                     <p></p>
 
                 </div>

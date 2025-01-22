@@ -24,7 +24,7 @@ exports.createCourse = async (req, res) => {
       instructions: _instructions,
     } = req.body
     // Get thumbnail image from request files
-    // const thumbnail = req.files.thumbnailImage
+    const thumbnail = req.files.thumbnailImage
 
     // Convert the tag and instructions from stringified Array to Array
     const tag = JSON.parse(_tag)
@@ -40,7 +40,7 @@ exports.createCourse = async (req, res) => {
       !whatYouWillLearn ||
       !price ||
       !tag.length ||
-      // !thumbnail ||
+      !thumbnail ||
       !category ||
       !instructions.length
     ) {
@@ -73,11 +73,11 @@ exports.createCourse = async (req, res) => {
       })
     }
     // Upload the Thumbnail to Cloudinary
-    // const thumbnailImage = await uploadImageToCloudinary(
-    //   // thumbnail,
-    //   process.env.FOLDER_NAME
-    // )
-    // console.log(thumbnailImage)
+    const thumbnailImage = await uploadImageToCloudinary(
+      thumbnail,
+      process.env.FOLDER_NAME
+    )
+    console.log(thumbnailImage)
     // Create a new course with the given details
     const newCourse = await Course.create({
       courseName,
@@ -87,7 +87,7 @@ exports.createCourse = async (req, res) => {
       price,
       tag,
       category: categoryDetails._id,
-      // thumbnail: thumbnailImage.secure_url,
+      thumbnail: thumbnailImage.secure_url,
       status: status,
       instructions,
     })

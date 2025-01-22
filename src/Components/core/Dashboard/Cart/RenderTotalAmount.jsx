@@ -17,10 +17,13 @@ export default function RenderTotalAmount() {
 
     if(total>0){
       const courses = cart.map((course) => course._id)
+      
     buyCourse(token, courses, user, navigate, dispatch)
     }
-    const courses = cart.map((course) => course._id)
+    if(total==0){
+      const courses = cart.map((course) => course._id)
     buyFreeCourse(token, courses, user, navigate, dispatch)
+    }
   }
   const ApplyCoupon=()=>{
     if(coupon==="OmSharma"){

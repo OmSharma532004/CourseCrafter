@@ -206,9 +206,7 @@ hands-on projects, quizzes, and personalized feedback from instructors.
                     
                     <InstructorSection/>
 
-                    <h2 className="text-center text-4xl font-semibold mt-10">Review of other Learners</h2>
-
-                    
+                     
                 </div>
                 
                 
@@ -216,7 +214,7 @@ hands-on projects, quizzes, and personalized feedback from instructors.
             }
             {
                 //footer
-                <div className="text-white   w-full bg-richblack-700">
+                <div className="text-white   w-full bg-black">
                          <div className=" mt-[100px] mb-[50px] ml-[7%] w-11/12 max-w-maxContent flex flex-col justify-center  text-4xl text-richblack-100 items-center text-center  pt-[30px]">OTHER LINKS</div>
                     <Footer/>
                 </div>

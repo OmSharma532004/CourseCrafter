@@ -10,7 +10,7 @@ export default function Settings() {
         Edit Profile
       </h1>
       {/* Change Profile Picture */}
-      <ChangeProfilePicture />
+      {/* <ChangeProfilePicture /> */}
       {/* Profile */}
       <EditProfile />
       {/* Password */}

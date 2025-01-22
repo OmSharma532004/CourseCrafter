@@ -7,6 +7,7 @@ import { resetCart } from "../../reducer/slices/cartSlice";
 import {enrollStudent} from "../apis";
 
 
+
 const {COURSE_PAYMENT_API, COURSE_VERIFY_API, SEND_PAYMENT_SUCCESS_EMAIL_API } = studentEndpoints;
 const {ENROLLSTUDENT}=enrollStudent;
 
@@ -101,7 +102,8 @@ export async function buyFreeCourse(token, courses, userDetails, navigate, dispa
                 throw new Error(response.data.message);
             }
             toast.success("Enrolled Successfully");
-            navigate("/dashboard/enrolled-courses");
+            
+            
         }
         catch(error) {
             console.log("ENROLL STUDENT ERROR....", error);
@@ -109,6 +111,12 @@ export async function buyFreeCourse(token, courses, userDetails, navigate, dispa
         }
     }
     )
+    toast.dismiss(toastId)
+    //reset cart
+    dispatch(resetCart());
+    navigate("/dashboard/enrolled-courses");
+
+    
 
 }
 

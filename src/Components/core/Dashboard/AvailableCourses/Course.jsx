@@ -65,18 +65,23 @@ export const Course= ({course})=>{
                     
                   <>
             
-                  <div onClick={()=>{setDetails(true)
-                    setView(course2)}} className=" max-w-[200px]  min-w-[200px] min-h-[200px] rounded-xl  text-white  bg-richblack-600 p-3">     
+                  <div  className=" w-[200px]  rounded-xl  text-white  bg-richblack-600 p-3">     
+                    <img src={course2.courseDetails.thumbnail} alt="course" className="w-full h-[150px] object-cover rounded-xl"/>
                     <h1 className=" text-yellow-50 text-xl">{course2.courseDetails.courseName}</h1>
                     <div className="description">
-                    {description}
+                    {/* {description} */}
                     <div><b className="text-yellow-200">Price- </b>{course2.courseDetails.price} </div>
                     <br></br>
-                    <span className="readMore text-blue-200" onClick={readmoreHandler}>
+                    {/* <span className="readMore text-blue-200" onClick={readmoreHandler}>
                         {readmore ? `show less` : `read more`}
-                    </span>
+                    </span> */}
 
-                   
+                   <button className="text-blue-200 " onClick={()=>{
+                    setView(course2) 
+                    setDetails(true);
+                   }}>
+                    Know More
+                   </button>
                     </div>
 
                     
